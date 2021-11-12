@@ -11,14 +11,26 @@
     "format": "prettier --ignore-path .gitignore --write --plugin-search-dir=. ."
   },
   "devDependencies": {
+    "@sveltejs/adapter-vercel": "next",
     "@sveltejs/kit": "next",
+    "imagemin": "^8.0.1",
+    "imagemin-svgo": "^10.0.0",
     "prettier": "^2.4.1",
     "prettier-plugin-svelte": "^2.4.0",
+    "rimraf": "^3.0.2",
     "svelte": "^3.42.6",
     "svelte-check": "^2.2.6",
     "svelte-preprocess": "^4.9.4",
+    "svgstore": "^3.0.1",
+    "svgstore-cli": "^2.0.1",
     "tslib": "^2.3.1",
     "typescript": "^4.4.3"
   },
-  "type": "module"
+  "type": "module",
+  "dependencies": {
+    "@fontsource/fira-sans": "^4.5.0",
+    "@prismicio/client": "^5.1.0",
+    "dotenv": "^10.0.0",
+    "prismic-dom": "^2.2.6"
+  }
 }

@@ -3,5 +3,8 @@
  * @param {string} property
  * @param {string} value
  * @returns {boolean}
-*/
-export function isDeclarationSupported(property: string, value: string): boolean;
+ */
+export function isDeclarationSupported(
+	property: string,
+	value: string
+): boolean;

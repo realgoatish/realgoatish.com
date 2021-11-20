@@ -12,10 +12,13 @@ export function labelRegionWithHeading(node: HTMLElement, inBrowser: any): void;
  * @param {HTMLElement} node
  * @param {{ expanded: boolean, headerText: string }} params
  */
-export function enhanceToggleSection(node: HTMLElement, params: {
-    expanded: boolean;
-    headerText: string;
-}): void;
+export function enhanceToggleSection(
+	node: HTMLElement,
+	params: {
+		expanded: boolean;
+		headerText: string;
+	}
+): void;
 /**
  * @param {HTMLElement} node
  * @typedef {Object} IntersectionObserverOptions - Options to pass to the IntersectionObserver API
@@ -24,21 +27,24 @@ export function enhanceToggleSection(node: HTMLElement, params: {
  * @property {number} [threshold]
  * @param {{ once?: boolean, cooldown?: number, options?: IntersectionObserverOptions, delay?: number, update?: *} | null } [config]
  */
-export function intersectionObserver(node: HTMLElement, config?: {
-    once?: boolean;
-    cooldown?: number;
-    options?: IntersectionObserverOptions;
-    delay?: number;
-    update?: any;
-} | null): {
-    update: (update: any) => void;
-    destroy: () => any;
+export function intersectionObserver(
+	node: HTMLElement,
+	config?: {
+		once?: boolean;
+		cooldown?: number;
+		options?: IntersectionObserverOptions;
+		delay?: number;
+		update?: any;
+	} | null
+): {
+	update: (update: any) => void;
+	destroy: () => any;
 };
 /**
  * - Options to pass to the IntersectionObserver API
  */
 export type IntersectionObserverOptions = {
-    root?: HTMLElement;
-    rootMargin?: string;
-    threshold?: number;
+	root?: HTMLElement;
+	rootMargin?: string;
+	threshold?: number;
 };

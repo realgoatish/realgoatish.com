@@ -2,10 +2,8 @@
 
   import Header from '$lib/ui/header/Header.svelte'
   import Center from '$lib/toolbox/layout/Center.svelte'
-
-
-  // import Imposter from '$lib/toolbox/layout/Imposter.svelte'
-  // import Box from '$lib/toolbox/layout/Box.svelte'
+  import Cover from '$lib/toolbox/layout/Cover.svelte'
+  import Box from '$lib/toolbox/layout/Box.svelte'
 
 
 
@@ -32,13 +30,25 @@
 </script>
 
 <Header backgroundImage={hero.images} />
-<main>
-  <p>Here's some test homepage content</p>
-</main>
+<!-- <main>
+  <Center>
+    <Cover>
+      <h2 slot="header">Here's some stuff</h2>
+      <Box slot="featured">
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+        </p>
+      </Box>
+      <button slot="footer">PRESS ME</button>
+    </Cover>
+  </Center>
+</main> -->
 
 
 <style>
 
-
+main > :global(.center) {
+  --measure: 75ch;
+}
 
 </style>

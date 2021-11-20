@@ -49,31 +49,35 @@
       </ul>
       <Cluster wrapperElement="ul">
         <li class="icon-small">
-          <Icon iconId="#icon-github" label="view Mike's code on GitHub" />
+          <a href="#">
+            <Icon iconId="#icon-github" label="view Mike's code on GitHub" />
+          </a>
         </li>
         <li class="icon-small">
-          <Icon iconId="#icon-twitter" label="reach out to Mike on Twitter" />
+          <a href="#">
+            <Icon iconId="#icon-twitter" label="reach out to Mike on Twitter" />
+          </a>
         </li>
         <li class="icon-small">
-          <Icon iconId="#icon-stackoverflow" label="view Mike's contributions on Stackoverflow" space={false} />
+          <a href="#">
+            <Icon iconId="#icon-stackoverflow" label="view Mike's contributions on Stackoverflow" space={false} />
+          </a>
         </li>
       </Cluster>
-      <!-- <p>Mike Lamb @realgoatish </p> -->
-
     </Stack>
   </Center>
 </nav>
 
 <style>
   nav {
+    font-size: var(--s1);
     text-align: center;
-    color: var(--color-white);
-    background-color: rgba(2,0,0,0.5);
-    backdrop-filter: blur(4px);
+    color: var(--color-darkish);
+    background-color: var(--color-white);
     padding: var(--s-1) var(--s-3);  }
 
   nav a {
-    color: var(--color-white);
+    color: var(--color-darkish);
     text-decoration: none;
   }
 
@@ -96,15 +100,11 @@
   }
 
   nav .icon-large :global(svg) {
-    font-size: var(--s4);
-  }
-
-  nav .icon-large a {
-    border: none;
+    font-size: var(--s5);
   }
 
   nav .icon-small :global(svg) {
-    font-size: var(--s2);
+    font-size: var(--s3);
   }
 
   nav :global(.cluster a) {
@@ -112,4 +112,5 @@
     display: block;
     text-transform: uppercase;
   }
+
 </style>

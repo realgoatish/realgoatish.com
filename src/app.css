@@ -1,7 +1,7 @@
 *,
 *::before,
 *::after {
-  box-sizing: border-box;
+	box-sizing: border-box;
 }
 
 body,
@@ -85,46 +85,57 @@ time,
 mark,
 audio,
 video {
-  margin: 0;
-  padding: 0;
-  border: 0;
-  font: inherit;
-  vertical-align: baseline;
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font: inherit;
+	vertical-align: baseline;
 }
 
 body {
-  --ratio: 1.5;
-  --s-5: calc(var(--s0)/var(--ratio)/var(--ratio)/var(--ratio)/var(--ratio)/var(--ratio));
-  --s-4: calc(var(--s0)/var(--ratio)/var(--ratio)/var(--ratio)/var(--ratio));
-  --s-3: calc(var(--s0)/var(--ratio)/var(--ratio)/var(--ratio));
-  --s-2: calc(var(--s0)/var(--ratio)/var(--ratio));
-  --s-1: calc(var(--s0)/var(--ratio));
-  --s0: 1rem;
-  --s1: calc(var(--s0)*var(--ratio));
-  --s2: calc(var(--s0)*var(--ratio)*var(--ratio));
-  --s3: calc(var(--s0)*var(--ratio)*var(--ratio)*var(--ratio));
-  --s4: calc(var(--s0)*var(--ratio)*var(--ratio)*var(--ratio)*var(--ratio));
-  --s5: calc(var(--s0)*var(--ratio)*var(--ratio)*var(--ratio)*var(--ratio)*var(--ratio));
-  --measure: 75ch;
-  --color-white: #fef9ef;
-  /* --color-light: #cce6be; */
-  /* --color-lightish: #bba0a0; */
-  --color-dark: #1b3022;
-  /* --color-darkish: #395756; */
-  /* --color-mid: #AA5350; */
-  --line-height: var(--ratio);
-  --font-size-base: var(--s0);
-  --font-size-biggish: var(--s1);
-  --font-size-big: var(--s2);
-  line-height: var(--line-height);
-  background-color: var(--color-white);
-  color: var(--color-dark);
-  font-size: var(--font-size-base);
-  font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji";
+	--ratio: 1.4;
+	--s-5: calc(
+		var(--s0) / var(--ratio) / var(--ratio) / var(--ratio) / var(--ratio) /
+			var(--ratio)
+	);
+	--s-4: calc(
+		var(--s0) / var(--ratio) / var(--ratio) / var(--ratio) / var(--ratio)
+	);
+	--s-3: calc(var(--s0) / var(--ratio) / var(--ratio) / var(--ratio));
+	--s-2: calc(var(--s0) / var(--ratio) / var(--ratio));
+	--s-1: calc(var(--s0) / var(--ratio));
+	--s0: 1rem;
+	--s1: calc(var(--s0) * var(--ratio));
+	--s2: calc(var(--s0) * var(--ratio) * var(--ratio));
+	--s3: calc(var(--s0) * var(--ratio) * var(--ratio) * var(--ratio));
+	--s4: calc(
+		var(--s0) * var(--ratio) * var(--ratio) * var(--ratio) * var(--ratio)
+	);
+	--s5: calc(
+		var(--s0) * var(--ratio) * var(--ratio) * var(--ratio) * var(--ratio) *
+			var(--ratio)
+	);
+	--measure: 75ch;
+	--color-white: #fef9ef;
+	--color-light: #ffcb77;
+	--color-lightish: #fe6d73;
+	--color-dark: #1b3022;
+	--color-darkish: #227c9d;
+	--color-mid: #17c3b2;
+	--line-height: var(--ratio);
+	--font-size-base: var(--s0);
+	--font-size-biggish: var(--s1);
+	--font-size-big: var(--s2);
+	line-height: var(--line-height);
+	background-color: var(--color-white);
+	color: var(--color-dark);
+	font-size: var(--font-size-base);
+	font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial,
+		sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji';
 }
 
 * {
-  max-width: var(--measure);
+	max-width: var(--measure);
 }
 
 html,
@@ -137,7 +148,7 @@ footer,
 aside,
 section,
 article {
-  max-width: none;
+	max-width: none;
 }
 
 /* HTML5 display-role reset for older browsers */
@@ -152,7 +163,7 @@ hgroup,
 menu,
 nav,
 section {
-  display: block;
+	display: block;
 }
 
 /* BEGIN CODE BLOCK FOR PINNING FOOTER TO BOTTOM OF PAGE */
@@ -160,66 +171,70 @@ section {
 body,
 #svelte,
 main {
-  min-height: 100vh;
+	min-height: 100vh;
 }
 
 html {
-  height: 100vh;
+	height: 100vh;
 }
 
 main {
-  display: flex;
-  flex-direction: column;
+	display: flex;
+	flex-direction: column;
 }
 
 main > * {
-  flex: 1 0 auto;
+	flex: 1 0 auto;
 }
 
 footer {
-  flex-shrink: 0;
+	flex-shrink: 0;
 }
 
 /* END CODE BLOCK FOR PINNING FOOTER TO BOTTOM OF PAGE */
 
 figure {
-  /* Safari hack to prevent bottom gap between figure and image */
-  line-height: 0;
+	/* Safari hack to prevent bottom gap between figure and image */
+	line-height: 0;
 }
 
 img {
-  max-width: 100%;
+	max-width: 100%;
 }
 
 button {
-  color: white;
-  background-color: #000;
-  border-radius: 0.25rem;
-  padding: 1em 1.5em;
+	color: white;
+	background-color: #000;
+	border-radius: 0.25rem;
+	padding: 1em 1.5em;
 }
 
 h1 {
-  font-size: var(--font-size-big);
+	font-size: var(--font-size-big);
 }
 
 h2 {
-  font-size: var(--font-size-biggish);
+	font-size: var(--font-size-biggish);
 }
 
 h3 {
-  font-weight: 600;
+	font-weight: 600;
+}
+
+ul {
+  list-style: none;
 }
 
 .flex {
-  display: flex;
+	display: flex;
 }
 
 .screen-reader-only {
-  position: absolute !important;
-  clip: rect(1px, 1px, 1px, 1px) !important;
-  padding: 0 !important;
-  border: 0 !important;
-  height: 1px !important;
-  width: 1px !important;
-  overflow: hidden !important;
+	position: absolute !important;
+	clip: rect(1px, 1px, 1px, 1px) !important;
+	padding: 0 !important;
+	border: 0 !important;
+	height: 1px !important;
+	width: 1px !important;
+	overflow: hidden !important;
 }

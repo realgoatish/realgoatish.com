@@ -6,6 +6,8 @@
   import Cluster from '$lib/toolbox/layout/Cluster.svelte'
   import Icon from '$lib/toolbox/layout/Icon.svelte'
   import Stack from '$lib/toolbox/layout/Stack.svelte'
+  import Box from '$lib/toolbox/layout/Box.svelte'
+
   import Nav from '$lib/ui/nav/Nav.svelte'
 
   export let backgroundImage
@@ -26,7 +28,13 @@
     <h1 slot="featured">
       Mike <br> Lamb
     </h1> 
-    <button slot="footer">Test Button</button>
+    <Box slot="footer">
+      <Center>
+        <h2>Writer, <br>Speaker, <br>Indie Hacker</h2>
+        <!-- <p>Writer, Speaker, Indie Hacker. I build SaaS as an economic force multiplier for small businesses. I share what I learn to help more people win. <a href="#">Here's why that matters to me</a>
+        </p> -->
+      </Center>
+    </Box>
   </Cover>
 </header>
 
@@ -54,8 +62,8 @@
     right: 0;
   }
 
-  .header :global(.cover > .featured) {
-    margin-top: 0;
+  header.header :global(.cover > .featured) {
+    margin-top: var(--s3);
   }
 
   h1 {
@@ -69,5 +77,29 @@
     1px 1px 0 var(--color-darkish); 
   }
 
+  header :global(.cover .footer .box) {
+    --background-color: var(--color-darkish);
+    --color: var(--color-white);
+    --measure: 60ch;
+    padding: var(--s-1) var(--s-3);
+  }
+
+  header a {
+    color: var(--color-white);
+    text-decoration: none;
+    border-bottom: 2px solid var(--color-light);
+  }
+
+  header a:hover, header a:active {
+    background-color: var(--color-white);
+    color: var(--color-darkish);
+  }
+  
+
+  @media (min-width: 400px) {
+    h1 {
+      font-size: var(--s4);
+    }
+  }
 
 </style>

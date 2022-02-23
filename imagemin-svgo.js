@@ -9,7 +9,6 @@ import imageminSvgo from 'imagemin-svgo';
 				plugins: [
 					{ name: 'cleanupIDs', params: { remove: false } },
 					{ name: 'cleanupNumericValues', params: { floatPrecision: 2 } },
-					{ name: 'removeStyleElement' },
 					{ name: 'removeTitle' },
           { name: 'convertShapeToPath' },
           { name: 'mergePaths' }

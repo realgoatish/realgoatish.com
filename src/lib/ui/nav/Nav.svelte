@@ -7,107 +7,88 @@
   import { getContext } from 'svelte'
   import { navData } from '$lib/js/constants'
 
-  const links = getContext(navData).headerData
+  const allLinks = getContext(navData)
 
-  $: console.log(`links in Nav.svelte: ${JSON.stringify(links, null, 2)}`)
-
-  let test = [
-    { href: '/blog/', text: 'blog' },
-    { href: '/about/', text: 'about'},
-    { href: '/links/', text: 'links'},
-    { href: '/links/', text: 'links'},
-    { href: '/links/', text: 'links'},
-
-  ]
+  // $: console.log(`allLinks in Nav.svelte: ${JSON.stringify(allLinks, null, 2)}`)
 
 </script>
 
-<nav>
+<div>
   <Center>
     <Stack>
-      <ul>
-        <Stack>
-          {#each links as link}
-            {#if link.href === '/'}
-              <li class="icon-large">
-                <a href={link.href}>
-                  <Icon iconId="#goat" label="goat" space={false} />
-                </a>
-              </li>
-            {/if}
-          {/each}
-          <Cluster wrapperElement="div">
-            {#each test as link}
-              {#if link.href !== '/'}
-                <li>
-                  <a href={link.href}>{link.text}</a>
+      <nav>
+        <ul>
+          <Stack>
+            {#each allLinks.navLinks as link}
+              {#if link.href === '/'}
+                <li class="icon-large">
+                  <a href={link.href}>
+                    <Icon iconId="#goat" label="goat" space={false} />
+                  </a>
                 </li>
               {/if}
             {/each}
-          </Cluster>
-        </Stack>
-      </ul>
+            <Cluster wrapperElement="div">
+              {#each allLinks.navLinks as link}
+                {#if link.href !== '/'}
+                  <li>
+                    <a class="nav-link link-hover-effect" href={link.href}>{link.text}</a>
+                  </li>
+                {/if}
+              {/each}
+            </Cluster>
+          </Stack>
+        </ul>
+      </nav>
       <Cluster wrapperElement="ul">
-        <li class="icon-small">
-          <a href="#">
-            <Icon iconId="#icon-github" label="view Mike's code on GitHub" />
-          </a>
-        </li>
-        <li class="icon-small">
-          <a href="#">
-            <Icon iconId="#icon-twitter" label="reach out to Mike on Twitter" />
-          </a>
-        </li>
-        <li class="icon-small">
-          <a href="#">
-            <Icon iconId="#icon-stackoverflow" label="view Mike's contributions on Stackoverflow" space={false} />
-          </a>
-        </li>
+        {#each allLinks.socialLinks as link, i}
+          <li class="icon-small">
+            <a href={link.href}>
+              {#if i === allLinks.socialLinks.length - 1}
+                <Icon iconId={link.iconId} label={link.site} space={false} />
+              {:else}
+                <Icon iconId={link.iconId} label={link.site} />
+              {/if}
+            </a>
+          </li>
+        {/each}
       </Cluster>
     </Stack>
   </Center>
-</nav>
+</div>
+
 
 <style>
-  nav {
+
+  div {
     font-size: var(--s1);
     text-align: center;
     color: var(--color-darkish);
     background-color: var(--color-white);
-    padding: var(--s-1) var(--s-3);  }
-
-  nav a {
-    color: var(--color-darkish);
-    text-decoration: none;
+    padding: var(--s-1) var(--s-3);
   }
 
-  nav a:hover, 
-  nav a:active {
-    color: var(--color-white);
-    background-color: var(--color-darkish);
-  }
-
-  nav :global(.center) {
+  div :global(.center) {
     --measure: 60ch;
   }
 
-  nav :global(.stack) {
+  div :global(.stack) {
     --space: var(--s-2);
   }
 
-  nav :global(.cluster) {
+  div :global(.cluster) {
     justify-content: center;
   }
 
-  nav .icon-large :global(svg) {
+  div .icon-large :global(svg) {
     font-size: var(--s5);
   }
 
-  nav .icon-small :global(svg) {
+  div .icon-small :global(svg) {
     font-size: var(--s3);
   }
 
-  nav :global(.cluster a) {
+  div :global(.cluster a) {
     width: min-content;
     display: block;
     text-transform: uppercase;

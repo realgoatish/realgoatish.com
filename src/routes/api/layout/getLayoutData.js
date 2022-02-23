@@ -9,34 +9,62 @@ export async function get(request) {
 	).then(res => {
     if (res.results[0]) {
 
-      // let test = res.results[0]
-
-      // console.log(JSON.stringify(test, null, 2))
+      console.log(`response in getLayoutData before processing: ${JSON.stringify(res.results[0], null, 2)}`)
 
       let body = res.results[0].data.body
 
-      let linkSlice = body
-        .filter(slice => slice.slice_type === "links")[0]
-
-      // console.log(JSON.stringify(linkSlice, null, 2))
-
-
-      navLinks = linkSlice.items.map(item => {
-        console.log(JSON.stringify(item, null, 2))
-       return { 
-        //  href: request.locals.DOM.Link.url(item.nav_link, linkResolver), 
-         href: request.locals.DOM.Link.url(item.nav_link, request.locals.ctx.linkResolver), 
-         text: item.nav_link.uid === 'blog' ? 'writing' : item.nav_link.uid
+      let [rawSocialLinks] = body
+        .filter(slice => slice.primary.link_cluster_type === "Social")
+        
+      let processedSocialLinks = rawSocialLinks.items.map(item => {
+        return {
+          href: item.link.url, 
+          site: item.external_link_id,
+          iconId: `#icon-${item.external_link_id.toLowerCase()}`
         }
       })
 
-      console.log(JSON.stringify(navLinks, null, 2))
+      let seo = body
+        .filter(slice => slice.slice_type === 'seo')
+        .map(item => {
+          return {
+            siteName: item.primary.site_name,
+            siteDescription: item.primary.site_description,
+            logo: item.primary.site_logo.url,
+            sameAs: processedSocialLinks.map(x => {
+              return x.href
+            }),
+            // phone: ,
+            // email: ,
+            locale: 'en_US'
+          }
+        })
 
+      let [globalSEO] = seo
+
+      let [rawNavLinks] = body
+        .filter(slice => slice.primary.link_cluster_type === "Nav")
+
+
+      let processedNavLinks = rawNavLinks.items.map(item => {
+        return { 
+          href: request.locals.DOM.Link.url(item.link, request.locals.ctx.linkResolver), 
+          text: item.link.uid
+        }
+      })
+
+      return {
+        headerData: {
+          navLinks: processedNavLinks,
+          socialLinks: processedSocialLinks
+        },
+        globalSEO
+      }
     }
   })
 
 	return {
 		status: 200,
-		body: navLinks
+		body: res
 	};
 }

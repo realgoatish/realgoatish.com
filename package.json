@@ -34,10 +34,6 @@
 	},
 	"type": "module",
 	"dependencies": {
-		"@fontsource/cooper-hewitt": "^4.5.0",
-		"@fontsource/fira-sans": "^4.5.0",
-		"@fontsource/inter": "^4.5.1",
-		"@fontsource/lato": "^4.5.0",
 		"@fontsource/playfair-display": "^4.5.1",
 		"@prismicio/client": "^5.1.0",
 		"dotenv": "^10.0.0",

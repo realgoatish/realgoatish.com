@@ -92,6 +92,10 @@ video {
 	vertical-align: baseline;
 }
 
+em {
+  font-style: italic;
+}
+
 body {
 	--ratio: 1.4;
 	--s-5: calc(
@@ -118,20 +122,22 @@ body {
 	--measure: 75ch;
 	--color-white: #fef9ef;
 	--color-light: #ffcb77;
-	--color-lightish: #fe6d73;
+	--color-lightish: #D43900;
 	--color-dark: #1b3022;
 	--color-darkish: #227c9d;
 	--color-mid: #17c3b2;
 	--line-height: var(--ratio);
+  --font-size-small: var(--s-1);
 	--font-size-base: var(--s0);
 	--font-size-biggish: var(--s1);
 	--font-size-big: var(--s2);
 	line-height: var(--line-height);
 	background-color: var(--color-white);
-	color: var(--color-dark);
+	color: var(--color-darkish);
 	font-size: var(--font-size-base);
 	font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial,
 		sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji';
+  -webkit-font-smoothing: antialiased;
 }
 
 * {
@@ -227,6 +233,20 @@ ul {
 
 .flex {
 	display: flex;
+}
+
+.nav-link {
+  color: var(--color-darkish);
+  text-decoration: none;
+}
+
+.link-hover-effect:hover, .link-hover-effect:active {
+  color: var(--color-white);
+  background-color: var(--color-darkish);
+}
+
+.text-small {
+  font-size: var(--font-size-small);
 }
 
 .screen-reader-only {

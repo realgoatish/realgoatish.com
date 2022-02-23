@@ -2,53 +2,69 @@
 
   import Header from '$lib/ui/header/Header.svelte'
   import Center from '$lib/toolbox/layout/Center.svelte'
-  import Cover from '$lib/toolbox/layout/Cover.svelte'
-  import Box from '$lib/toolbox/layout/Box.svelte'
+  import AboutSection from '$lib/ui/content/AboutSection.svelte'
+  import BaseSEO from '$lib/toolbox/seo/BaseSEO.svelte'
+
+  export const prerender = true
 
 
-
-	export async function load({ fetch, stuff }) {
-		let res = await fetch('/api/home/getHomePageData', {
+	export async function load({ fetch }) {
+		let res = await fetch('/api/home/getHomePageData/', {
 			method: 'GET'
 		}).then((data) => data.json());
 
-    console.log(stuff)
+    console.log(`res before processing: ${JSON.stringify(res, null, 2)}`)
+
+
+    const { hero, about, pageSEO } = res
 
 		return {
 			props: {
-				homePageData: res,
+				hero,
+        about,
+        pageSEO
 			}
 		};
 	}
 </script>
 
 <script>
-	export let homePageData;
+  import { globalSeoData } from '$lib/js/constants'
+  import { getContext } from 'svelte'
 
-  const { hero } = homePageData
+  export let hero
+
+  export let about
+
+  export let pageSEO
+
+  let globalSEO = getContext(globalSeoData)
+
+  // $: console.log(`globalSEO on homepage: ${JSON.stringify(globalSEO, null, 2)}`)
+  // $: console.log(`pageSEO on homepage: ${JSON.stringify(pageSEO, null, 2)}`)
 
 </script>
 
-<Header backgroundImage={hero.images} />
-<!-- <main>
+<BaseSEO data={{
+  currentPage: pageSEO,
+  global: globalSEO
+}}/>
+
+<Header {...hero} />
+<main>
   <Center>
-    <Cover>
-      <h2 slot="header">Here's some stuff</h2>
-      <Box slot="featured">
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-        </p>
-      </Box>
-      <button slot="footer">PRESS ME</button>
-    </Cover>
+    <AboutSection {...about} />
   </Center>
-</main> -->
+</main>
 
 
 <style>
 
-main > :global(.center) {
-  --measure: 75ch;
-}
-
+  main > :global(.center) {
+    /* --gutters: var(--s0); */
+    --measure: 75ch;
+    padding-top: var(--s5);
+    padding-bottom: var(--s5);
+  }
+  
 </style>

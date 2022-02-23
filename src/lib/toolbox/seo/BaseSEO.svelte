@@ -24,7 +24,7 @@
 	let pageImageAlt = currentPage.altText;
 	let pageTitle = currentPage.title;
 	let pageDescription = currentPage.description;
-  let ogType = isBlogPostPath.test($page.path) ? 'article' : 'website'
+  let ogType = isBlogPostPath.test($page.url.pathname) ? 'article' : 'website'
 	let ogImage = currentPage.images.facebook.url;
 	let ogImageWidth = currentPage.images.facebook.width;
 	let ogImageHeight = currentPage.images.facebook.height;
@@ -74,7 +74,7 @@
 		description: pageDescription
 	};
 
-	if (isBlogPath.test($page.path)) {
+	if (isBlogPath.test($page.url.pathname)) {
 		console.log('IT WORKS!!!');
 
 		webPageType['breadcrumb'] = {

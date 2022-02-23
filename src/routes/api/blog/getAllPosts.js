@@ -1,9 +1,9 @@
 import { initApi, getAllPostsPageData, getAllPosts, monthMap } from '$lib/js/utils';
 
 
-export async function get(request) {
+export async function get(event) {
 
-	const pageData = await initApi(request, request.locals.ctx.endpoint).then(
+	const pageData = await initApi(event.request, event.locals.ctx.endpoint).then(
     function(api) {
       return getAllPostsPageData(api)
     }
@@ -52,7 +52,7 @@ export async function get(request) {
     }
   })
 
-  const allPostsData = await initApi(request, request.locals.ctx.endpoint).then(
+  const allPostsData = await initApi(event.request, event.locals.ctx.endpoint).then(
     function(api) {
       return getAllPosts(api)
     }
@@ -60,7 +60,7 @@ export async function get(request) {
     // console.log(`allPostsData result before processing: ${JSON.stringify(result, null, 2)}`)
     if (result.results[0]) {
       let postsData = result.results.map(post => {
-        let createdAt = request.locals.DOM.Date(post.first_publication_date)
+        let createdAt = event.locals.DOM.Date(post.first_publication_date)
         // console.log(``)
         return {
           title: post.data.post_title,

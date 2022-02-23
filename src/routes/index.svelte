@@ -5,7 +5,7 @@
   import AboutSection from '$lib/ui/content/AboutSection.svelte'
   import BaseSEO from '$lib/toolbox/seo/BaseSEO.svelte'
 
-  export const prerender = true
+  // export const prerender = true
 
 
 	export async function load({ fetch }) {

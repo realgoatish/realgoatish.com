@@ -1,8 +1,8 @@
 import { initApi, getHomePageData } from '$lib/js/utils';
 
 
-export async function get(request) {
-	const res = await initApi(request, request.locals.ctx.endpoint).then(
+export async function get(event) {
+	const res = await initApi(event.request, event.locals.ctx.endpoint).then(
     function(api) {
       return getHomePageData(api)
     }
@@ -43,11 +43,11 @@ export async function get(request) {
         .map(slice => {
           return {
             title: slice.primary.title,
-            summary: request.locals.DOM.RichText.asHtml(slice.primary.summary, request.locals.ctx.linkResolver),
+            summary: event.locals.DOM.RichText.asHtml(slice.primary.summary, event.locals.ctx.linkResolver),
             sections: slice.items.map(item => {
               return {
                 header: item.header,
-                description: request.locals.DOM.RichText.asHtml(item.description, request.locals.ctx.linkResolver)
+                description: event.locals.DOM.RichText.asHtml(item.description, event.locals.ctx.linkResolver)
               }
             })
           }

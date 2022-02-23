@@ -4,7 +4,7 @@ dotenv.config()
 
 const { BASE_PATH, BLOG_PATH } = process.env
 
-export async function get(request) {
+export async function get() {
   const getHomePageData = await fetch(`${BASE_PATH}/api/home/getHomePageData`)
   const home = await getHomePageData.json()
 

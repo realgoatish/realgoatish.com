@@ -9,9 +9,9 @@
   import HeadingTag from '$lib/toolbox/heading-tag/HeadingTag.svelte'
   import BaseSEO from '$lib/toolbox/seo/BaseSEO.svelte'
 
-	export async function load({ fetch, page }) {
+	export async function load({ fetch, params }) {
 
-    const { slug } = page.params
+    const { slug } = params
 
 		let res = await fetch(`/api/blog/${slug}/`, {
 			method: 'GET'

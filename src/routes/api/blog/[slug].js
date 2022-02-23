@@ -1,11 +1,11 @@
 import { initApi, getPost, monthMap } from '$lib/js/utils';
 
 
-export async function get(request) {
+export async function get(event) {
 
-  const { slug } = request.params
+  const { slug } = event.params
 
-	const pageData = await initApi(request, request.locals.ctx.endpoint).then(
+	const pageData = await initApi(event.request, event.locals.ctx.endpoint).then(
     function(api) {
       return getPost(api, slug)
     }
@@ -17,9 +17,9 @@ export async function get(request) {
 
       console.log(`result before processing in [slug].js: ${JSON.stringify(result, null, 2)}`)
 
-      let seoDatePublished = request.locals.DOM.Date(result.results[0].first_publication_date)
+      let seoDatePublished = event.locals.DOM.Date(result.results[0].first_publication_date)
 
-      let seoDateModified = request.locals.DOM.Date(result.results[0].last_publication_date)
+      let seoDateModified = event.locals.DOM.Date(result.results[0].last_publication_date)
 
       let body = result.results[0].data.body
 
@@ -86,7 +86,7 @@ export async function get(request) {
                   ? item.post_block_title
                   : null,
                 text: item.post_block_text[0]
-                  ? request.locals.DOM.RichText.asHtml(item.post_block_text, request.locals.ctx.linkResolver)
+                  ? event.locals.DOM.RichText.asHtml(item.post_block_text, event.locals.ctx.linkResolver)
                   : null,
                 image: item.post_block_image.desktop.dimensions
                   ? [

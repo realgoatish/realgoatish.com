@@ -5,7 +5,7 @@
   import Nav from '$lib/ui/nav/Nav.svelte'
   import Footer from '$lib/ui/footer/Footer.svelte'
 
-	export async function load({ fetch, page }) {
+	export async function load({ fetch, url }) {
 		let res = await fetch('/api/layout/getLayoutData/', {
 			method: 'GET'
 		}).then((data) => data.json());
@@ -14,7 +14,9 @@
 
 
     const { headerData, globalSEO } = res
-    const { host, path } = page
+    const host = url.hostname
+    const path = url.pathname
+    // const { host, path } = page
 
     globalSEO.canonical = `https://${host}${path}`
     globalSEO.siteUrl = `https://${host}/`

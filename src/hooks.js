@@ -4,20 +4,22 @@ import PrismicDOM from 'prismic-dom';
 const { PRISMIC_API_ENDPOINT } = process.env;
 import { linkResolver } from '$lib/js/utils'
 
-export async function handle({ request, resolve }) {
-	request.locals.ctx = {
+export async function handle({ event, resolve }) {
+	event.locals.ctx = {
 		endpoint: PRISMIC_API_ENDPOINT,
     linkResolver: linkResolver
   };
 
-	request.locals.DOM = PrismicDOM;
+	event.locals.DOM = PrismicDOM;
 
-	const response = await resolve(request);
+	const response = await resolve(event);
 
-	return {
-		...response,
-		headers: {
-			...response.headers
-		}
-	};
+  return response
+
+	// return {
+	// 	...response,
+	// 	headers: {
+	// 		...response.headers
+	// 	}
+	// };
 }

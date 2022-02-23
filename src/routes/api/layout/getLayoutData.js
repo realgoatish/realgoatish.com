@@ -1,8 +1,8 @@
 import { initApi, getGlobalLayoutData } from '$lib/js/utils';
 
 
-export async function get(request) {
-	const res = await initApi(request, request.locals.ctx.endpoint).then(
+export async function get(event) {
+	const res = await initApi(event.request, event.locals.ctx.endpoint).then(
     function(api) {
       return getGlobalLayoutData(api)
     }
@@ -48,7 +48,7 @@ export async function get(request) {
 
       let processedNavLinks = rawNavLinks.items.map(item => {
         return { 
-          href: request.locals.DOM.Link.url(item.link, request.locals.ctx.linkResolver), 
+          href: event.locals.DOM.Link.url(item.link, event.locals.ctx.linkResolver), 
           text: item.link.uid
         }
       })

@@ -174,14 +174,14 @@ section {
 
 /* BEGIN CODE BLOCK FOR PINNING FOOTER TO BOTTOM OF PAGE */
 
+html {
+  min-width: fit-content;
+}
+/* html also inherits this property *upward* from body */
 body,
 #svelte,
-main {
+#body-wrapper {
 	min-height: 100vh;
-}
-
-html {
-	height: 100vh;
 }
 
 main {

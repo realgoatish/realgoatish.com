@@ -72,7 +72,7 @@
 <style>
   main :global(.center) {
     --gutters: var(--s-3);
-    --measure: 60ch;
+    --measure: 70ch;
   }
 
   main :global(.center > .stack) {

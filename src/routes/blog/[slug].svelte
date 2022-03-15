@@ -33,19 +33,36 @@
 
 <script>
   import { globalSeoData } from '$lib/js/constants'
-  import { getContext } from 'svelte'
+  import { getContext, onMount } from 'svelte'
+  import 'prismjs/themes/prism.min.css'
+  import Prism from 'prismjs'
+  import 'prism-svelte'
   export let post
   export let pageSEO
 
   const globalSEO = getContext(globalSeoData)
 
-  $: console.log(`pageSEO on blog/[slug].svelte: ${JSON.stringify(pageSEO, null, 2)}`)
+  onMount(() => {
+
+    document.querySelectorAll('pre').forEach((el) => {
+      // hack to avoid escaping HTML
+      let txt = document.createElement("textarea")
+      txt.innerHTML = el.childNodes[0].data
+      console.log(txt.value)
+
+      const highlighted = Prism.highlight(txt.value, Prism.languages.svelte, 'svelte')
+      el.innerHTML = highlighted
+      el.classList.add('language-')
+    })
+  })
+
 </script>
 
 <BaseSEO data={{
   currentPage: pageSEO,
   global: globalSEO
 }}/>
+
 <main>
   <Center>
     <Article>
@@ -132,12 +149,20 @@
 
   main :global(.center) {
     --gutters: var(--s-3);
-    --measure: 60ch;
+    --measure: 70ch;
   }
 
   main :global(.cover) {
     padding-top: var(--s1);
     padding-bottom: var(--s1);
+  }
+
+  main :global(pre.language-) {
+    font-size: var(--s-1);
+    /* Prism adds padding: 1em to the pre element, and we need a width in order 
+    to trigger the overflow-x */
+    width: calc(100vw - 1em);
+    overflow-x: auto;
   }
 
   main :global(ul) {

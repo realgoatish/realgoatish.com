@@ -9,13 +9,9 @@
 			method: 'GET'
 		}).then((data) => data.json());
 
-    console.log(`res before processing: ${JSON.stringify(res, null, 2)}`)
-
-
     const { headerData, globalSEO } = res
     const host = url.hostname
     const path = url.pathname
-    // const { host, path } = page
 
     globalSEO.canonical = `https://${host}${path}`
     globalSEO.siteUrl = `https://${host}/`
@@ -35,8 +31,6 @@
   import { setContext } from 'svelte'
   export let headerData
   export let globalSEO
-
-  // $: console.log(`globalSEO on client: ${JSON.stringify(globalSEO, null, 2)}`)
 
   setContext(navData, headerData)
   setContext(globalSeoData, globalSEO)

@@ -5,9 +5,6 @@
   import AboutSection from '$lib/ui/content/AboutSection.svelte'
   import BaseSEO from '$lib/toolbox/seo/BaseSEO.svelte'
 
-  // export const prerender = true
-
-
 	export async function load({ fetch }) {
 		let res = await fetch('/api/home/getHomePageData/', {
 			method: 'GET'
@@ -40,9 +37,6 @@
 
   let globalSEO = getContext(globalSeoData)
 
-  // $: console.log(`globalSEO on homepage: ${JSON.stringify(globalSEO, null, 2)}`)
-  // $: console.log(`pageSEO on homepage: ${JSON.stringify(pageSEO, null, 2)}`)
-
 </script>
 
 <BaseSEO data={{
@@ -61,10 +55,8 @@
 <style>
 
   main > :global(.center) {
-    /* --gutters: var(--s0); */
+    --gutters: var(--s0);
     --measure: 75ch;
-    padding-top: var(--s5);
-    padding-bottom: var(--s5);
   }
   
 </style>

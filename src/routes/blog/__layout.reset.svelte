@@ -65,4 +65,17 @@
 	#body-wrapper :global(h6) {
 		font-family: 'Playfair Display';
 	}
+
+  /* BEGIN CODE BLOCK FOR PINNING FOOTER TO BOTTOM OF PAGE */
+
+#body-wrapper :global(main) {
+  display: block;
+}
+
+#body-wrapper {
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+}
+
+/* END CODE BLOCK FOR PINNING FOOTER TO BOTTOM OF PAGE */
 </style>

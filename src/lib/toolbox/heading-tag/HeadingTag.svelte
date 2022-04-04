@@ -42,7 +42,7 @@
 		return `
     <h${level} 
       id=${id} 
-      ${wrapperClass ? `class=${wrapperClass}` : ''}
+      class=${wrapperClass ? `heading-tag ${wrapperClass}` : `heading-tag`}
     >
       ${param}
     </h${level}>

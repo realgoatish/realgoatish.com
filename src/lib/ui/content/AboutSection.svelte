@@ -32,22 +32,20 @@
       <Switcher slot="featured" space="var(--s1)" threshold={"25rem"} wrapperElement="div">
         {#each sections as section, i}
             <Article>
-          <Render>
-
-              <Center andText={true} intrinsic={true}>
-                <Stack>
-                  {#if i === 1}
-                    <HeadingTag message={section.header} />
-                      <Icon ariaHidden={true} space={null} iconId="#trending-up" />
-                  {:else}
-                    <HeadingTag message={section.header} />
-                      <Icon ariaHidden={true} space={null} iconId="#light-bulb" />
-                  {/if}
-                  {@html section.description}
-                </Stack>
-              </Center>
-          </Render>
-
+              <Render>
+                <Center andText={true} intrinsic={true}>
+                  <Stack>
+                    {#if i === 1}
+                      <HeadingTag message={section.header} />
+                        <Icon ariaHidden={true} space={null} iconId="#trending-up" />
+                    {:else}
+                      <HeadingTag message={section.header} />
+                        <Icon ariaHidden={true} space={null} iconId="#light-bulb" />
+                    {/if}
+                    {@html section.description}
+                  </Stack>
+                </Center>
+              </Render>
             </Article>
 
         {/each}
@@ -65,20 +63,13 @@
 
   div :global(.switcher article) {
     margin-block-start: var(--s5);
+    min-block-size: 100%;
   }
 
   div :global(section > .render-on-scroll > .stack),
   div :global(.switcher > article > .render-on-scroll > *) {
 	  animation: fade-in-bottom .8s cubic-bezier(0.390, 0.575, 0.565, 1.000) forwards;
   }
-
-  /* div :global(.switcher > article:nth-child(2) .heading-tag) {
-	  animation: fade-in-left .8s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
-  } */
-
-  /* div :global(.switcher > article:last-child .heading-tag) {
-	  animation: pulse .8s cubic-bezier(0.390, 0.575, 0.565, 1.000) forwards;
-  } */
 
   @keyframes -global-fade-in-bottom {
   0% {
@@ -90,26 +81,6 @@
     opacity: 1;
   }
 }
-
-/* @keyframes -global-fade-in-left {
-  0% {
-    transform: translateX(50px);
-    opacity: 0;
-  }
-  100% {
-    transform: translateX(0);
-    opacity: 1;
-  }
-} */
-
-/* @keyframes -global-pulse {
-  0% {
-    transform: scale(1.3);
-  }
-  100% {
-    transform: scale(1);
-  }
-} */
 
   div :global(.icon) {
     font-size: var(--s4);

@@ -7,7 +7,7 @@
 </script>
 
 <footer>
-  <Center>
+  <Center andText={true}>
     <div>
       {@html string}
     </div>

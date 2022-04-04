@@ -14,8 +14,8 @@
 </script>
 
 <div>
-  <Center>
-    <Stack>
+  <Center andText={true}>
+    <Stack space="var(--s-2)">
       <nav>
         <ul>
           <Stack>
@@ -28,7 +28,7 @@
                 </li>
               {/if}
             {/each}
-            <Cluster wrapperElement="div">
+            <Cluster wrapperElement="div" justify="center" align="center">
               {#each allLinks.navLinks as link}
                 {#if link.href !== '/'}
                   <li>
@@ -40,7 +40,7 @@
           </Stack>
         </ul>
       </nav>
-      <Cluster wrapperElement="ul">
+      <Cluster wrapperElement="ul" justify="center" align="center">
         {#each allLinks.socialLinks as link, i}
           <li class="icon-small">
             <a href={link.href}>
@@ -62,22 +62,9 @@
 
   div {
     font-size: var(--s1);
-    text-align: center;
     color: var(--color-darkish);
     background-color: var(--color-white);
     padding: var(--s-1) var(--s-3);
-  }
-
-  div :global(.center) {
-    --measure: 60ch;
-  }
-
-  div :global(.stack) {
-    --space: var(--s-2);
-  }
-
-  div :global(.cluster) {
-    justify-content: center;
   }
 
   div .icon-large :global(svg) {

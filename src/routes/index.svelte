@@ -50,13 +50,3 @@
     <AboutSection {...about} />
   </Center>
 </main>
-
-
-<style>
-
-  main > :global(.center) {
-    --gutters: var(--s0);
-    --measure: 75ch;
-  }
-  
-</style>

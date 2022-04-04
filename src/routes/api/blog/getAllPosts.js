@@ -61,7 +61,6 @@ export async function get(event) {
     if (result.results[0]) {
       let postsData = result.results.map(post => {
         let createdAt = event.locals.DOM.Date(post.first_publication_date)
-        // console.log(``)
         return {
           title: post.data.post_title,
           subTitle: post.data.post_subtitle,
@@ -92,7 +91,7 @@ export async function get(event) {
             }, []),
           href: `/blog/${post.uid}/`,
           feedPublicationDate: createdAt.toUTCString(),
-          publicationDate: createdAt.getFullYear === new Date().getFullYear
+          publicationDate: createdAt.getFullYear() === new Date().getFullYear()
             ? `${monthMap[createdAt.getMonth()]} ${createdAt.getDate()}`
             : `${monthMap[createdAt.getMonth()]} ${createdAt.getDate()}, ${createdAt.getFullYear()}`
         }

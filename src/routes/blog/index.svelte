@@ -1,5 +1,7 @@
 <script context="module">
   import Center from '$lib/toolbox/layout/Center.svelte'
+  import Cluster from '$lib/toolbox/layout/Cluster.svelte'
+
   import Stack from '$lib/toolbox/layout/Stack.svelte'
   import Section from '$lib/toolbox/section/Section.svelte'
   import Article from '$lib/toolbox/article/Article.svelte'
@@ -46,7 +48,7 @@
 }}/>
 
 <main>
-  <Center>
+  <Center intrinsic={true} gutters={"var(--s-3)"}>
     <Stack>
       <div>
         <HeadingTag message={page.title} />
@@ -59,8 +61,16 @@
               <a class="link-hover-effect" href={post.href}>
                 {post.title}
               </a>
-              <p class="text-small">{post.tags}</p>
-  
+              <br>
+              {#if post.tags.length !== 0}
+                <Cluster wrapperElement="ul">
+                  {#each post.tags as tag}
+                    <li>
+                      <span class="text-small">{tag}</span>
+                    </li>
+                  {/each}
+                </Cluster>
+              {/if}
             </Article>
           {/each}
         </Stack>
@@ -70,10 +80,6 @@
 </main>
 
 <style>
-  main :global(.center) {
-    --gutters: var(--s-3);
-    --measure: 70ch;
-  }
 
   main :global(.center > .stack) {
     --space: var(--s1);

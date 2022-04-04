@@ -57,22 +57,18 @@
 </div>
 
 <style>
-  #body-wrapper :global(h1),
-	#body-wrapper :global(h2),
-	#body-wrapper :global(h3),
-	#body-wrapper :global(h4),
-	#body-wrapper :global(h5),
-	#body-wrapper :global(h6) {
+  div :global(.heading-tag) {
 		font-family: 'Playfair Display';
-	}
+    color: var(--color-lightish);
+  }
 
   /* BEGIN CODE BLOCK FOR PINNING FOOTER TO BOTTOM OF PAGE */
 
-#body-wrapper :global(main) {
+div :global(main) {
   display: block;
 }
 
-#body-wrapper {
+div {
   display: grid;
   grid-template-rows: auto 1fr auto;
 }

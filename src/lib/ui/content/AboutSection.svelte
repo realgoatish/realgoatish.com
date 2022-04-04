@@ -21,31 +21,39 @@
   <Section>
     <Cover>
       <Section slot="header">
-        <Render>
           <Stack space="var(--s0)" >
-            <HeadingTag message={title} />
+            <Render>
+
+              <HeadingTag message={title} />
+
+            </Render>
+            
             {@html summary}
           </Stack>
-        </Render>
       </Section>
       <Switcher slot="featured" space="var(--s1)" threshold={"25rem"} wrapperElement="div">
         {#each sections as section, i}
-          <Render>
             <Article>
               <Center andText={true} intrinsic={true}>
                 <Stack>
                   {#if i === 1}
-                    <HeadingTag message={section.header} />
-                      <Icon ariaHidden={true} space={null} iconId="#trending-up" />
+                    <Render>
+
+                      <HeadingTag message={section.header} />
+                    </Render>
+
+                        <Icon ariaHidden={true} space={null} iconId="#trending-up" />
+
                   {:else}
-                    <HeadingTag message={section.header} />
+                    <Render>
+                      <HeadingTag message={section.header} />
+                    </Render>
                       <Icon ariaHidden={true} space={null} iconId="#light-bulb" />
                   {/if}
                   {@html section.description}
                 </Stack>
               </Center>
             </Article>
-          </Render>
         {/each}
       </Switcher>
       <!-- <button slot="footer">PRESS ME</button> -->
@@ -63,15 +71,15 @@
     margin-block-start: var(--s5);
   }
 
-  div :global(section > .render-on-scroll > .stack) {
+  div :global(section .render-on-scroll .heading-tag) {
 	  animation: fade-in-bottom .8s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
   }
 
-  div :global(.switcher > .render-on-scroll:nth-child(2) > article) {
+  div :global(.switcher > article:nth-child(2) .heading-tag) {
 	  animation: fade-in-left .8s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
   }
 
-  div :global(.switcher > .render-on-scroll:last-child > article) {
+  div :global(.switcher > article:last-child .heading-tag) {
 	  animation: fade-in-right .8s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
   }
 

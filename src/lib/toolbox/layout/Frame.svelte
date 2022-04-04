@@ -1,18 +1,19 @@
+<!--
+  @component
+  Frame for cropping images to a desired aspect ratio
+-->
+
 <script>
 	import { intersectionObserver } from '$lib/js/actions';
 
-	/**
-	 * @type {string}
-	 * set an optional class name for the top-level element of this component to enable
-	 * scoped styling of each component instance from outside (in parent components or pages)
-	 */
-	export let wrapperClass = '';
+	/** @type {?string} [wrapperClass=null] - add a class name to the top-level element of this component to enable scoped styling of each component instance from outside (in parent components or pages) */
+	export let wrapperClass = null;
 
-	/**
-	 * @type {boolean}
-	 * set to 'true' for image lazyloading
-	 */
+	/** @type {boolean} [lazy=false] - set to 'true' for image lazyloading */
 	export let lazy = false;
+
+  /** @type {string} [ratio=`1:1`] - The desired aspect ratio */
+  export let ratio = `1:1`
 
 	let intersecting = false;
 
@@ -25,6 +26,8 @@
 	use:intersectionObserver={{ once: true, options: { rootMargin: '0px' } }}
 	on:intersection={setIntersecting}
 	class={wrapperClass ? `frame ${wrapperClass}` : 'frame'}
+  style:--numerator={ratio.split(`:`)[0]}
+  style:--denominator={ratio.split(`:`)[1]}
 >
 	<noscript>
 		<slot />
@@ -68,12 +71,7 @@
 	}
 
 	/* 
-  for cropping <img> or <video> descendants of .frame
-  Note that this allows the option of a <Loader> component to slot into .frame & 
-  wrap the <img> for lazyloading 
-
-  TODO - test how this will affect e.g. when a <div> is the child of .frame,
-  but the <div> has multiple children including an <img>
+  for cropping <img> or <video> children of .frame
   */
 	.frame > :global(img),
 	.frame > :global(noscript > img),

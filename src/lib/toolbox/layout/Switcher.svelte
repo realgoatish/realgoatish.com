@@ -1,32 +1,73 @@
+<!--
+  @component
+  Switch between horizontal & vertical layout at a given, container-based breakpoint
+-->
+
+
 <script>
-	/**
-	 * @type {string}
-	 * set an optional class name for the top-level element of this component to enable
-	 * scoped styling of each component instance from outside (in parent components or pages)
-	 */
-	export let wrapperClass = '';
-	/**
-	 * @type {string}
-	 * control the parent of slot content by choosing 'div', 'ul', 'ol', or 'dl'
-	 */
+	/** @type {?string} [wrapperClass=null] - add a class name to the top-level element of this component to enable scoped styling of each component instance from outside (in parent components or pages) */
+  export let wrapperClass = null;
+
+	/** @type {!string} - control the parent of slot content by choosing 'div', 'ul', 'ol', or 'dl' */
 	export let wrapperElement;
+
+  /** @type {string} - A CSS `width` value (representing the `container breakpoint`) */
+  export let threshold = "var(--measure)"
+
+  /** @type {?string} [space=null] - A CSS `margin` value */
+  export let space = null
+
+  /** @type {number} - A number representing the maximum number of items permitted for a horizontal layout */
+  export let limit = 4
 </script>
 
 {#if wrapperElement === 'ul'}
-	<ul class={wrapperClass ? `switcher ${wrapperClass}` : 'switcher'}>
+	<ul class={wrapperClass ? `switcher ${wrapperClass}` : 'switcher'}
+    style:--threshold={threshold}
+    style:--space={space ? space : null}
+  >
+  {@html `<style>
+    .switcher > :nth-last-child(n+ ${limit + 1}) {
+      flex-basis: 100%;
+    }
+    </style>`}
 		<slot />
 	</ul>
 {:else if wrapperElement === 'ol'}
-	<ol class={wrapperClass ? `switcher ${wrapperClass}` : 'switcher'}>
+	<ol class={wrapperClass ? `switcher ${wrapperClass}` : 'switcher'}
+    style:--threshold={threshold}
+    style:--space={space ? space : null}
+  >
+  {@html `<style>
+    .switcher > :nth-last-child(n+ ${limit + 1}) {
+      flex-basis: 100%;
+    }
+    </style>`}
 		<slot />
 	</ol>
 {:else if wrapperElement === 'dl'}
-	<dl class={wrapperClass ? `switcher ${wrapperClass}` : 'switcher'}>
+	<dl class={wrapperClass ? `switcher ${wrapperClass}` : 'switcher'}
+    style:--threshold={threshold}
+    style:--space={space ? space : null}
+  >
+  {@html `<style>
+    .switcher > :nth-last-child(n+ ${limit + 1}) {
+      flex-basis: 100%;
+    }
+    </style>`}
 		<slot />
 	</dl>
 {:else if wrapperElement === 'div'}
 	<!-- each slotted child element for the Switcher requires a <div> wrapper -->
-	<div class={wrapperClass ? `switcher ${wrapperClass}` : 'switcher'}>
+	<div class={wrapperClass ? `switcher ${wrapperClass}` : 'switcher'}
+    style:--threshold={threshold}
+    style:--space={space ? space : null}
+  >
+  {@html `<style>
+    .switcher > :nth-last-child(n+${limit + 1}) {
+      flex-basis: 100%;
+    }
+    </style>`}
 		<slot />
 	</div>
 {/if}
@@ -46,12 +87,7 @@
 
 	.switcher > :global(*) {
 		flex-grow: 1;
-		flex-basis: calc((var(--measure, 30rem) - 100%) * 999);
-	}
-
-	.switcher > :global(* > :nth-last-child(n + 5)),
-	.switcher > :global(* > :nth-last-child(n + 5) ~ *) {
-		flex-basis: 100%;
+		flex-basis: calc((var(--threshold, 30rem) - 100%) * 999);
 	}
 
 	ul,

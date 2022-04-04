@@ -63,9 +63,16 @@
     margin-block-start: var(--s5);
   }
 
-  div :global(.switcher > div > article),
-  div :global(section > div > .stack) {
-	  animation: fade-in-bottom 1.2s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+  div :global(section > .render-on-scroll > .stack) {
+	  animation: fade-in-bottom .8s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+  }
+
+  div :global(.switcher > .render-on-scroll:nth-child(2) > article) {
+	  animation: fade-in-left .8s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+  }
+
+  div :global(.switcher > .render-on-scroll:last-child > article) {
+	  animation: fade-in-right .8s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
   }
 
   @keyframes -global-fade-in-bottom {
@@ -75,6 +82,28 @@
   }
   100% {
     transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes -global-fade-in-left {
+  0% {
+    transform: translateX(50px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes -global-fade-in-right {
+  0% {
+    transform: translateX(-50px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
     opacity: 1;
   }
 }

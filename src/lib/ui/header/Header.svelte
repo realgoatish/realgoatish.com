@@ -21,11 +21,11 @@
       altText={"test alt text"}
     />
   </Frame>
-  <Cover>
+  <Cover noPad={true}>
     <Nav slot="header" />
     <h1 slot="featured">{@html header}</h1>
-    <Box slot="footer">
-      <Center>
+    <Box colorLight={"var(--color-white)"} colorDark={"var(--color-darkish)"} invert={true} padding={"var(--s-1)"}  slot="footer">
+      <Center andText={true}>
         <h2>{@html text}</h2>
       </Center>
     </Box>
@@ -56,11 +56,12 @@
     right: 0;
   }
 
+  /* Cover's featured item (my name) needs to be much closer to its header item on smaller sreens */
   header.header :global(.cover > .featured) {
     margin-top: var(--s-4);
   }
 
-  h1 {
+  header  h1 {
     line-height: 1;
     font-size: var(--s3);
     color: var(--color-lightish);
@@ -71,15 +72,12 @@
     1px 1px 0 var(--color-white); 
   }
 
-  header :global(.cover .footer .box) {
-    --background-color: var(--color-darkish);
-    --color: var(--color-white);
-    --measure: 60ch;
-    padding: var(--s-1) var(--s-3);
+  header h2 {
+    color: var(--color-light);
   }
 
-  @media (min-width: 400px) {
-    h1 {
+  @media (min-width: 600px) {
+    header h1 {
       font-size: var(--s4);
     }
 

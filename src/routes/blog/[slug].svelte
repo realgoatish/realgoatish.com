@@ -64,7 +64,7 @@
 }}/>
 
 <main>
-  <Center>
+  <Center intrinsic={true}>
     <Article>
       <Cover>
         <div slot="header">

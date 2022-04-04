@@ -49,13 +49,11 @@
 </div>
 
 <style>
-	#body-wrapper :global(h1),
-	#body-wrapper :global(h2),
-	#body-wrapper :global(h3),
-	#body-wrapper :global(h4),
-	#body-wrapper :global(h5),
-	#body-wrapper :global(h6) {
+	div :global(.heading-tag),
+  div :global(h1),
+  div :global(h2) {
 		font-family: 'Playfair Display';
+    color: var(--color-lightish);
 	}
 
 </style>

@@ -119,14 +119,21 @@ body {
 		var(--s0) * var(--ratio) * var(--ratio) * var(--ratio) * var(--ratio) *
 			var(--ratio)
 	);
-	--measure: 75ch;
-	--color-white: #fef9ef;
-	--color-light: #ffcb77;
-	--color-lightish: #D43900;
-	--color-dark: #1b3022;
-	--color-darkish: #227c9d;
-	--color-mid: #17c3b2;
-	--line-height: var(--ratio);
+	--measure: 60ch;
+  --color-h: 40;
+  --color-s: 88%;
+  --color-l: 97%;
+	--color-white: hsl(
+    var(--color-h),
+    var(--color-s),
+    var(--color-l)
+  );
+	--color-light: hsl(37, 100%, 73%);
+	--color-lightish: hsl(16, 100%, 42%);
+	--color-dark: hsl(140, 28%, 15%);
+	--color-darkish: hsl(196, 64%, 38%);
+	--color-mid: hsl(174, 79%, 43%);
+	--line-height: 1.75;
   --font-size-small: var(--s-1);
 	--font-size-base: var(--s0);
 	--font-size-biggish: var(--s1);
@@ -141,7 +148,7 @@ body {
 }
 
 * {
-	max-width: var(--measure);
+	max-inline-size: var(--measure);
 }
 
 html,
@@ -154,7 +161,7 @@ footer,
 aside,
 section,
 article {
-	max-width: none;
+	max-inline-size: none;
 }
 
 /* HTML5 display-role reset for older browsers */
@@ -175,7 +182,7 @@ section {
 /* BEGIN CODE BLOCK FOR PINNING FOOTER TO BOTTOM OF PAGE */
 
 html {
-  min-width: fit-content;
+  min-inline-size: fit-content;
 }
 /* html also inherits this property *upward* from body */
 body,
@@ -205,7 +212,7 @@ figure {
 }
 
 img {
-	max-width: 100%;
+	max-inline-size: 100%;
 }
 
 button {

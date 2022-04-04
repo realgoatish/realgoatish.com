@@ -1,5 +1,6 @@
 {
-	"include": ["src/lib/js/*.js"],
+	"extends": "./.svelte-kit/tsconfig.json",
+  "include": ["src/lib/js/*.js"],
 	"exclude": ["node_modules"],
 	"compilerOptions": {
 		"baseUrl": ".",

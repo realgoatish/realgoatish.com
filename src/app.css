@@ -123,16 +123,17 @@ body {
   --color-h: 40;
   --color-s: 88%;
   --color-l: 97%;
-	--color-white: hsl(
+  --color-white: #fefaf1;
+	/* --color-white: hsl(
     var(--color-h),
     var(--color-s),
     var(--color-l)
-  );
-	--color-light: hsl(37, 100%, 73%);
-	--color-lightish: hsl(16, 100%, 42%);
-	--color-dark: hsl(140, 28%, 15%);
-	--color-darkish: hsl(196, 64%, 38%);
-	--color-mid: hsl(174, 79%, 43%);
+  ); */
+	--color-light: #ffca75;
+	--color-lightish: #d63900;
+	--color-dark: #1c3123;
+	--color-darkish: #237e9f;
+	--color-mid: #17c4b3;
 	--line-height: 1.75;
   --font-size-small: var(--s-1);
 	--font-size-base: var(--s0);

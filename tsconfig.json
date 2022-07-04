@@ -5,7 +5,8 @@
 	"compilerOptions": {
 		"baseUrl": ".",
 		"paths": {
-			"$lib/*": ["src/lib/*"]
+      "$lib":["src/lib"],
+      "$lib/*":["src/lib/*"]
 		},
 		// Tells TypeScript to read JS files, as
 		// normally they are ignored as source files

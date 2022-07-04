@@ -10,7 +10,9 @@ const config = {
 
 	kit: {
 		// hydrate the <div id="svelte"> element in src/app.html
-		adapter: vercel(),
+		adapter: vercel({
+      edge: true
+    }),
     trailingSlash: 'always',
 		vite: {
 			resolve: {

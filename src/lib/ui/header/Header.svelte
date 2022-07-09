@@ -1,9 +1,6 @@
 <script>
-  import Cover from '$lib/toolbox/layout/Cover.svelte'
-  import Frame from '$lib/toolbox/layout/Frame.svelte'
+  import { Cover, Frame, Center, Box } from '@realgoatish/svelte-every-layout'
   import Image from '$lib/toolbox/layout/Image.svelte'
-  import Center from '$lib/toolbox/layout/Center.svelte'
-  import Box from '$lib/toolbox/layout/Box.svelte'
   import Nav from '$lib/ui/nav/Nav.svelte'
 
   export let header
@@ -15,7 +12,7 @@
 </script>
 
 <header class="header">
-  <Frame>
+  <Frame ratio={undefined}>
     <Image
       images={images}
       altText={"test alt text"}
@@ -25,7 +22,7 @@
     <Nav slot="header" />
     <h1 slot="featured">{@html header}</h1>
     <Box colorLight={"var(--color-white)"} colorDark={"var(--color-darkish)"} invert={true} padding={"var(--s-1)"}  slot="footer">
-      <Center andText={true}>
+      <Center andText={true} max={"var(--measure)"}>
         <h2>{@html text}</h2>
       </Center>
     </Box>

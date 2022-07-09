@@ -1,5 +1,5 @@
 <script>
-  import Center from '$lib/toolbox/layout/Center.svelte'
+  import { Center } from '@realgoatish/svelte-every-layout'
   import Nav from '$lib/ui/nav/Nav.svelte'
 
 
@@ -7,7 +7,7 @@
 </script>
 
 <footer>
-  <Center andText={true}>
+  <Center andText={true} max={"var(--measure)"}>
     <div>
       {@html string}
     </div>

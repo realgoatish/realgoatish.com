@@ -1,7 +1,5 @@
 <script>
   import { Center } from '@realgoatish/svelte-every-layout'
-  import Nav from '$lib/ui/nav/Nav.svelte'
-
 
   let string = `&copy; Mike Lamb - ${new Date().getFullYear()}`
 </script>

@@ -1,4 +1,5 @@
 <script>
+
 	/**
 	 * @type {string}
 	 * set an optional class name for the top-level element of this component to enable
@@ -12,13 +13,22 @@
 	 */
 	export let images;
 
+  /**
+   * @type {boolean}
+   * lazy loading when an item scrolls into view with JS, else a simple opacity fade-in without JS
+  */
+  export let lazy = false
+
 	/**
 	 * @type {string}
 	 */
 	export let altText;
+
 </script>
 
 <img
+  loading={lazy ? 'lazy' : 'eager'}
+  class:lazy
 	srcset={images.map((obj) => `${obj.src} ${obj.width}w,`).join('')}
 	src={images[images.length - 1].src}
 	sizes="50vw"
@@ -27,12 +37,11 @@
 />
 
 <style>
-	img {
+	.lazy {
 		opacity: 0;
 		animation-name: fadeImages;
 		animation-duration: 1.2s;
 		animation-fill-mode: forwards;
-		border-radius: var(--image-border-radius, none);
 	}
 
 	/* animation for opacity fade-in of image with or without JS */

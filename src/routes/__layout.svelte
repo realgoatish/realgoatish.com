@@ -30,7 +30,6 @@
 
   import { navData } from '$lib/js/constants'
   import { setContext } from 'svelte'
-  import { page } from '$app/stores'
   import '@fontsource/playfair-display/800.css';
   import '../app.css';
   import Sprite from '$lib/toolbox/sprite/Sprite.svelte'
@@ -39,8 +38,6 @@
   export let headerData
 
   setContext(navData, headerData)
-
-  console.log(`$page.stuff in __layout.svelte: ${JSON.stringify($page.stuff, null, 2)}`)
 
 </script>
 

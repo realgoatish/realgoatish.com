@@ -9,8 +9,6 @@ export async function get(event) {
 	).then(res => {
     if (res.results[0]) {
 
-      console.log(`response in getLayoutData before processing: ${JSON.stringify(res.results[0], null, 2)}`)
-
       let body = res.results[0].data.body
 
       let [rawSocialLinks] = body

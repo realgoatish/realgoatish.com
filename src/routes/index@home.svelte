@@ -8,14 +8,23 @@
 
   export const load = async ({ props }) => {
 
-    const { pageSEO } = props
+    console.log(`props on homePage front end: ${JSON.stringify(props, null, 2)}`)
 
-    return {
-      props,
-      stuff: {
-        pageSEO
+    if (props?.pageSEO) {
+      const { pageSEO } = props
+
+      return {
+        props,
+        stuff: {
+          pageSEO
+        }
       }
     }
+
+    return {
+      props
+    }
+
   }
 
 </script>

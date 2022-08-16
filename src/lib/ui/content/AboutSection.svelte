@@ -83,6 +83,7 @@
 
   div :global(.icon) {
     font-size: var(--s4);
+    /* fill:  */
   }
 
 

@@ -58,12 +58,13 @@
   div {
     font-size: var(--s1);
     color: var(--color-darkish);
-    background-color: var(--color-white);
+    background-color: var(--color-primary--white);
     padding: var(--s-1) var(--s-3);
   }
 
   div .icon-large :global(svg) {
     font-size: var(--s5);
+    fill: var(--color-primary--dark);
   }
 
   div .icon-small :global(svg) {

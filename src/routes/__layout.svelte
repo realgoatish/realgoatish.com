@@ -59,7 +59,7 @@
 
   div :global(.heading-tag) {
     font-family: 'Playfair Display';
-    color: var(--color-lightish);
+    color: var(--color-secondary);
   }
 
   /* BEGIN CODE BLOCK FOR PINNING FOOTER TO BOTTOM OF PAGE */

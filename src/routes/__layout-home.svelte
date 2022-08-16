@@ -56,7 +56,7 @@
   div :global(h1),
   div :global(h2) {
 		font-family: 'Playfair Display';
-    color: var(--color-lightish);
+    color: var(--color-secondary);
 	}
 
 </style>

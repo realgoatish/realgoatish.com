@@ -55,8 +55,8 @@
     let pageImageId = `${canonical}#primaryimage`;
     let pageImageUrl = currentPage.images.main.url;
     pageImageAlt = currentPage.altText;
-    let pageTitle = currentPage.title;
-    let pageDescription = currentPage.description;
+    pageTitle = currentPage.title;
+    pageDescription = currentPage.description;
     ogType = isBlogPostPath.test($page.url.pathname) ? 'article' : 'website'
     ogImage = currentPage.images.facebook.url;
     ogImageWidth = currentPage.images.facebook.width;

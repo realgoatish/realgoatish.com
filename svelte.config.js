@@ -10,9 +10,9 @@ const config = {
 		// hydrate the <div id="svelte"> element in src/app.html
 		adapter: vercel(),
     trailingSlash: 'always',
-    browser: {
-      router: false
-    }
+    // browser: {
+    //   router: false
+    // }
 	}
 };
 

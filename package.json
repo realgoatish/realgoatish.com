@@ -2,9 +2,9 @@
 	"name": "realgoatish.com",
 	"version": "0.0.1",
 	"scripts": {
-		"dev": "svelte-kit dev",
-		"build": "npm run start && svelte-kit build",
-		"preview": "npm run start && svelte-kit preview",
+		"dev": "vite dev",
+		"build": "npm run start && vite build",
+		"preview": "npm run start && vite preview",
 		"check": "svelte-check --tsconfig ./tsconfig.json",
 		"check:watch": "svelte-check --tsconfig ./tsconfig.json --watch",
 		"lint": "prettier --ignore-path .gitignore --check --plugin-search-dir=. .",
@@ -18,7 +18,7 @@
 	},
 	"devDependencies": {
 		"@sveltejs/adapter-vercel": "next",
-		"@sveltejs/kit": "next",
+		"@sveltejs/kit": "1.0.0-next.405",
 		"imagemin": "^8.0.1",
 		"imagemin-svgo": "^10.0.0",
 		"prettier": "^2.4.1",
@@ -26,16 +26,19 @@
 		"rimraf": "^3.0.2",
 		"svelte": "^3.46",
 		"svelte-check": "^2.2.6",
+		"svelte-dts": "^0.3.7",
 		"svelte-preprocess": "^4.9.4",
 		"svgstore": "^3.0.1",
 		"svgstore-cli": "^2.0.1",
 		"tslib": "^2.3.1",
-		"typescript": "^4.4.3"
+		"typescript": "^4.4.3",
+		"vite": "^3.0.0"
 	},
 	"type": "module",
 	"dependencies": {
 		"@fontsource/playfair-display": "^4.5.1",
 		"@prismicio/client": "^5.1.0",
+    "@realgoatish/svelte-every-layout": "^0.0.22",
 		"dotenv": "^10.0.0",
 		"prism-svelte": "^0.5.0",
 		"prismic-dom": "^2.2.6",

@@ -120,27 +120,59 @@ body {
 			var(--ratio)
 	);
 	--measure: 60ch;
-  --color-h: 40;
-  --color-s: 88%;
-  --color-l: 97%;
+  /* --color-h: 196;
+  --color-s: 64%;
+  --color-l: 38%;
   --color-white: #fefaf1;
-	/* --color-white: hsl(
-    var(--color-h),
-    var(--color-s),
-    var(--color-l)
-  ); */
 	--color-light: #ffca75;
 	--color-lightish: #d63900;
 	--color-dark: #1c3123;
-	--color-darkish: #237e9f;
-	--color-mid: #17c4b3;
+	--color-darkish: #237e9f; */
+  --test-primary: hsl(196, 64%, 38%);
+  --test-light: hsl(196, 64%, 53%);
+  --test-dark: hsl(196, 64%, 23%);
+  --test-complement: hsl(376, 64%, 38%);
+  --test-complement-light: hsl(376, 64%, 53%);
+  --test-white: hsl(196, 64%, 90%);
+  --color-primary-h: 196;
+  --color-primary-s: 64%;
+  --color-primary-l: 38%;
+  --color-primary: hsl(
+    var(--color-primary-h),
+    var(--color-primary-s),
+    var(--color-primary-l)
+  );
+  /* try defining the primary color as loose h/s/l variables & riffing off that */
+  --h: 196;
+  /* --h: 280; */
+
+  --s: 64%;
+  --l: 38%;
+  /* lighten */
+  --color-primary--light: hsl(var(--color-primary-h), var(--color-primary-s), calc(var(--color-primary-l) + 15%));
+
+  /* darken */ 
+  --color-primary--dark: hsl(var(--color-primary-h), var(--color-primary-s), calc(var(--color-primary-l) - 15%));
+  
+  /* complement */
+  --color-secondary: hsl(calc(var(--color-primary-h) + 180), var(--color-primary-s), var(--color-primary-l));
+
+  --color-secondary--white: hsl(calc(var(--color-primary-h) + 180), var(--color-primary-s), 90%);
+
+  --color-primary--white: hsl(var(--color-primary-h), var(--color-primary-s), 90%);
+
+  --color-primary--black: hsl(var(--color-primary-h), var(--color-primary-s), 10%);
+
 	--line-height: 1.75;
   --font-size-small: var(--s-1);
 	--font-size-base: var(--s0);
 	--font-size-biggish: var(--s1);
 	--font-size-big: var(--s2);
 	line-height: var(--line-height);
-	background-color: var(--color-white);
+	/* background-color: var(--color-white); */
+	background-color: hsl(var(--h), var(--s), 90%);
+  color: hsl(var(--h), var(--s), 10%);
+
 	color: var(--color-darkish);
 	font-size: var(--font-size-base);
 	font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial,
@@ -244,13 +276,13 @@ ul {
 }
 
 .nav-link {
-  color: var(--color-darkish);
+  color: var(--color-primary--dark);
   text-decoration: none;
 }
 
 .link-hover-effect:hover, .link-hover-effect:active {
-  color: var(--color-white);
-  background-color: var(--color-darkish);
+  color: var(--color-primary--white);
+  background-color: var(--color-primary--dark);
 }
 
 .text-small {

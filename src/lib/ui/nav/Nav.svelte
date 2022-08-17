@@ -1,20 +1,15 @@
 <script>
 
-  import Center from '$lib/toolbox/layout/Center.svelte'
-  import Cluster from '$lib/toolbox/layout/Cluster.svelte'
-  import Icon from '$lib/toolbox/layout/Icon.svelte'
-  import Stack from '$lib/toolbox/layout/Stack.svelte'
+  import { Center, Cluster, Icon, Stack } from '@realgoatish/svelte-every-layout'
   import { getContext } from 'svelte'
   import { navData } from '$lib/js/constants'
 
   const allLinks = getContext(navData)
 
-  // $: console.log(`allLinks in Nav.svelte: ${JSON.stringify(allLinks, null, 2)}`)
-
 </script>
 
 <div>
-  <Center andText={true}>
+  <Center andText={true} max={"var(--measure)"}>
     <Stack space="var(--s-2)">
       <nav>
         <ul>
@@ -23,7 +18,7 @@
               {#if link.href === '/'}
                 <li class="icon-large">
                   <a href={link.href}>
-                    <Icon iconId="#goat" label="goat" space={false} />
+                    <Icon iconId="#goat" ariaLabel="goat" />
                   </a>
                 </li>
               {/if}
@@ -40,14 +35,14 @@
           </Stack>
         </ul>
       </nav>
-      <Cluster wrapperElement="ul" justify="center" align="center">
+      <Cluster wrapperElement="ul" justify="center" align="center" space={"var(--s1)"}>
         {#each allLinks.socialLinks as link, i}
           <li class="icon-small">
             <a href={link.href}>
               {#if i === allLinks.socialLinks.length - 1}
-                <Icon iconId={link.iconId} label={link.site} space={false} />
+                <Icon iconId={link.iconId} ariaLabel={link.site} />
               {:else}
-                <Icon iconId={link.iconId} label={link.site} />
+                <Icon iconId={link.iconId} ariaLabel={link.site} />
               {/if}
             </a>
           </li>
@@ -63,12 +58,13 @@
   div {
     font-size: var(--s1);
     color: var(--color-darkish);
-    background-color: var(--color-white);
+    background-color: var(--color-primary--white);
     padding: var(--s-1) var(--s-3);
   }
 
   div .icon-large :global(svg) {
     font-size: var(--s5);
+    fill: var(--color-primary--dark);
   }
 
   div .icon-small :global(svg) {

@@ -100,11 +100,13 @@ export async function get(event) {
     }
   })
 
+  const res = {
+    pageData,
+    allPostsData
+  }
+
 	return {
 		status: 200,
-		body: {
-      pageData,
-      allPostsData
-    }
+    body: res
 	};
 }

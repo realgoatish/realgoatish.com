@@ -38,7 +38,7 @@
 	"dependencies": {
 		"@fontsource/playfair-display": "^4.5.1",
 		"@prismicio/client": "^5.1.0",
-		"@realgoatish/svelte-every-layout": "0.0.19",
+    "@realgoatish/svelte-every-layout": "git+https://${ENV.PRIVATE_PACKAGE_ACCESS_TOKEN}:x-oauth-basic@github.com/realgoatish/svelte-every-layout.git",
 		"dotenv": "^10.0.0",
 		"prism-svelte": "^0.5.0",
 		"prismic-dom": "^2.2.6",
